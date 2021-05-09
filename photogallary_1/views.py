@@ -8,7 +8,6 @@ from django.contrib.auth import authenticate,login,logout
 from .decoraters import *
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-
 @check_authenticated
 def registeruser(request):
     form = RegisterUser()
