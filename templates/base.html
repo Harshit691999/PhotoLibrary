@@ -21,7 +21,6 @@
 </head>
 <body class="m-5">
     {% comment %} {% include 'navbar.html' %} {% endcomment %}
-    
         <div class = "container">
             <div class="row">
                     <div class="col-md-3">
@@ -65,7 +64,9 @@
                         </div>
                     <div>
             </div>
+        
         </div>
+        <a href="{% url 'logoutuser' %}" class="btn btn-dark my-3">logout</a>
 </body>
 
     {% comment %} <hr>

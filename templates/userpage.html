@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<title>USERPAGE</title>
+<style>
+.container
+{
+    margin-left:0px;
+}
+.image-thumbnail{
+    height:200px;
+    object-fit:cover;
+}
+.text{
+  text-transform: capitalize;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel= "stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    <title>Photo Libraby</title>
+</head>
+<body class="m-5 bg-secondary">
+    {% comment %} {% include 'navbar.html' %} {% endcomment %}
+        <div class = "container">
+            <div class="row">
+                    <div class="col-md-3">
+                        <nav>
+                            <div class="card ml-0">
+                                {% comment %} <div class="card-header">
+                                    GALLARY
+                                </div> {% endcomment %}
+                                <ul class="list-group list-group-flush">
+                                <a class="list-group-item list-group-item-action list-group-item-dark text-capitalize" href="{% url 'userpage' %}">ALL</a>
+                                {% for c in categories %}
+                                    <a class="list-group-item list-group-item-action list-group-item-dark text-capitalize" href="{% url 'userpage'%}?category={{c.cat_name}} ">{{c.cat_name}}</a>
+        
+                                {% endfor %}    
+                                    <a href="{% url 'addphoto' %}" class="list-group-item list-group-item-action list-group-item-dark text-capitalize">Add Photo</a>
+                                    <a href="{% url 'logoutuser' %}" class="list-group-item list-group-item-action list-group-item-dark text-capitalize">Logout</a>
+                                </ul>
+                                
+                            </div>
+                            
+                        </nav>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                        {% for p in photos %}
+                            <div class="col-4">
+                                <div class="card my-2">
+                                {% if p.image %}
+                                    <img class="image-thumbnail" 
+                                    src="{{p.image.url}}" alt="...">
+                                {% endif %}    
+                                    <div class="card-body">
+                                        <h5 class="card-tittle text-capitalize">Category: {{p.category.cat_name}}</h5>
+                                        <h5 class="card-tittle text-capitalize">Name: {{request.user}}</h5>
+                                        <a href="{% url 'viewphoto' p.id %}" class="btn btn-outline-success btn-sm m-1">view Photo</a>
+                                    </div>
+                                    {% comment %} <a href="{% url 'viewphoto' p.id %}" class="btn btn-outline-success btn-sm m-1">view Photo</a> {% endcomment %}
+                                </div>
+                            </div>
+                        {%empty%}
+                        <h3>no photo...</h3>
+                        {% endfor %}
+                        </div>
+                    <div>
+            </div>
+        
+        </div>
+        
+</body>
+
+    {% comment %} <hr>
+    <h1>fotter</h1> {% endcomment %}
+
+    <!-- Java script-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

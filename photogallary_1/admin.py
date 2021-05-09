@@ -5,6 +5,6 @@ from .models import *
 
 admin.site.register(Category)
 admin.site.register(Photo)
-# admin.site.register("model name")
+admin.site.register(Profile)
 # admin.site.register("model name")
 # admin.site.register("model name")

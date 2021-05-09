@@ -16,19 +16,25 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col">
-
-                <a href="{% url 'home' %}" class="btn btn-dark my-3">Go Back</a>
+                <a href="{% url 'userpage' %}" class="btn btn-dark my-1">Go Back</a>
+                <div style="height: 90vh;">
+                    <img style="max-width: 100%; max-height: 100%;" src="{{data.image.url}}">
+                    {% comment %} <p>{{data.description}}</p> {% endcomment %}
                 <form action="{% url 'deleteimage' data.id %}" method="post">
                 {% csrf_token %}
                 {% comment %} <a href="{% url 'deleteimage' data.id %}" class="btn btn-dark my-3">Delete</a> {% endcomment %}
                 <button class="btn btn-dark my-3" type="submit">Delete</button>
                 </form>
-                <div style="height: 90vh;">
-                    <img style="max-width: 100%; max-height: 100%;" src="{{data.image.url}}">
-
-                    <p>{{data.description}}</p>
                 </div>
-
+            </div>
+            <div class="col">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                        <h5 class="text-capitalize text-center">image description</h5>
+                        <p class="text-capitalize">{{data.description}}</p>
+                </div>
+            </div>
             </div>
         </div>
     </div>

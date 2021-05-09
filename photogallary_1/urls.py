@@ -5,7 +5,11 @@ from . import views
 
 
 urlpatterns = [
-    path('',views.gallary,name='home'),
+    path('',views.loginuser ,name='home'),
+    path('registeriuser/',views.registeruser,name='registeruser'),
+    path('loginuser/',views.loginuser,name='loginuser'),
+    path('userpage/',views.userpage,name='userpage'),
+    path('logout_user/',views.logoutuser,name='logoutuser'),
     path('viewphoto/<slug:pk>/',views.viewphoto,name='viewphoto'),
     path('addphoto/',views.addphoto,name='addphoto'),
     path('deleteimage/<int:pk>/',views.deleteimage,name='deleteimage'),
