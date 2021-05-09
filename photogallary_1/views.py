@@ -30,7 +30,7 @@ def loginuser(request):
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            print("USEr : ",user)
+            # print("USEr : ",user)
             login(request,user)
             return redirect('userpage')
         else:
