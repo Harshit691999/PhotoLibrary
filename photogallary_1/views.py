@@ -75,7 +75,7 @@ def userpage(request):
     else:
         photo = request.user.profile.photo_set.filter(category__cat_name__contains=category)
     print(request.user)
-    print("photo :",photo)
+    # print("photo :",photo)
     #photo = current_user.photo_set.all()
     
     context = {
