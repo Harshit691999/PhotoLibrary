@@ -1,0 +1,1 @@
+web: waitress-serve --port=$PORT PhotoGallary.wsgi:application
