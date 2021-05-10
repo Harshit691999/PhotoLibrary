@@ -129,6 +129,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT= BASE_DIR/'static'
 
 
+
 #MEDIA_ROOT is for server path to store files in the computer.
 #MEDIA_URL is the reference URL for browser to access the files over Http.
 
