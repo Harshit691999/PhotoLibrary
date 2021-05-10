@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 # ]
 STATIC_ROOT= BASE_DIR/'static'
 
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 #MEDIA_ROOT is for server path to store files in the computer.
