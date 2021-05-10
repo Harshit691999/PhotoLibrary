@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT PhotoGallary.wsgi:application
+web: gunicorn PhotoGallary.wsgi

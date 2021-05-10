@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY ='4=^s$%_vgdw*s8!tc5n9)lxg9v7zxvj6y67!f-00njymkk0p@y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1","photolib1.herokuapp.com"]
 
@@ -44,7 +48,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
     'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,17 +129,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR,'static')
-# ]
-STATIC_ROOT= BASE_DIR/'static'
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
+STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
 #MEDIA_ROOT is for server path to store files in the computer.
 #MEDIA_URL is the reference URL for browser to access the files over Http.
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
 # added by me
 MEDIA_URL = '/images/'
+
+
+django_heroku.settings(locals())
